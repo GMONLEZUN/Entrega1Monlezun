@@ -1,0 +1,17 @@
+
+{% extends "Personas/padre.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    {% if formularioPersona.errors %}
+    <p style="color:red">Revisar, hay errores en los datos</p>
+    {% endif%}
+
+    <form action="" method="post">{% csrf_token %}
+            <table>
+                {{ formularioPersona.as_table }}
+            </table>
+            <input type="submit" value="Cargar">
+    </form>
+{% endblock %}

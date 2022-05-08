@@ -1,5 +1,7 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
+
+from Personas.forms import PersonaFormulario
 from .models import Persona, Apertura
 
 
@@ -21,3 +23,17 @@ def apertura(request):
 
 def nosotros(request):
     return render(request, "Personas/nosotros.html")
+
+def personaFormulario(request):
+    if request.method == 'POST':
+        formularioPersona = PersonaFormulario(request.POST)
+        print(formularioPersona)
+        if formularioPersona.is_valid():
+            informacion = formularioPersona.cleaned_data
+            persona = Persona(nombre=informacion['nombre'], apellido=informacion['apellido'], nacionalidad=informacion['nacionalidad'], ranking=informacion['ranking'])
+            persona.save()
+            return render(request, "Personas/index.html") #agregar un gracias por cargar
+    else:
+        formularioPersona = PersonaFormulario()
+
+    return render(request, "Personas/personaFormulario.html", {"formularioPersona":formularioPersona})
