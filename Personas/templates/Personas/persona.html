@@ -1,0 +1,72 @@
+
+{% extends "Personas/padre.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <div class="container mt-5">
+        <form action="/Personas/buscar" method="GET" class="d-flex flex-row-reverse p-3 me-5 mb-2">
+            <div class="d-flex flex-row">
+                <input type="text" name="apellido" id="apellido" class="">
+                <button type="submit" class="btn btn-outline-primary">Buscar</button>
+            </div>
+            
+        </form>
+        
+        <div class="formCargaJugadores">
+            {% if formularioPersona.errors %}
+            <p style="color:red">Revisar, hay errores en los datos</p>
+            {% endif%}
+        
+            <form action="" method="post" class="">{% csrf_token %}
+                <h3 class="">Formulario para la carga de jugadores</h3>
+                    <table class="">
+                        <div class="">
+                            {{ formularioPersona.as_table }}
+                        </div>
+                    </table>
+                    <button type="submit" class="btn btn-outline-success mt-3">Cargar</button>
+            </form>
+        </div>
+    
+    </div>
+    <div class="container mt-5">
+        <table class="table table-dark table-hover">
+            <thead>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Nacionalidad
+                </th>
+                <th>
+                    Ranking
+                </th>
+            </thead>
+            <tbody>
+                {% for jugador in jugadores %}
+                    <tr>
+                        <td>
+                            {{jugador.nombre}}
+                        </td>
+                        <td>
+                            {{jugador.apellido}}
+                        </td>
+                        <td>
+                            {{jugador.nacionalidad}}
+                        </td>
+                        <td>
+                            {{jugador.ranking}}
+                        </td>
+                    </tr>
+                 {% endfor %}
+            </tbody>
+            
+        </table>
+    </div>
+   
+  
+{% endblock %}

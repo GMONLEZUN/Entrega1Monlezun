@@ -9,12 +9,6 @@ from .models import Persona, Apertura
 def inicio(request):
     return render(request, "Personas/index.html")
 
-def persona(request):
-    persona = Persona(nombre="Garry", apellido="Kasparov",nacionalidad="Azerbaijan/URSS", ranking="2851")
-    # persona.save()
-    documento=f"Se ha cargado a correctamente {persona.nombre} {persona.apellido}"
-    return render(request, "Personas/jugadores.html")
-
 def apertura(request):
     apertura= Apertura(ecoCode="E01", nombre="Defensa Holandesa",ordenJugadas="1.d4 f5")
     # apertura.save()
@@ -24,7 +18,8 @@ def apertura(request):
 def nosotros(request):
     return render(request, "Personas/nosotros.html")
 
-def personaFormulario(request):
+def persona(request):
+    jugadores = Persona.objects.all()
     if request.method == 'POST':
         formularioPersona = PersonaFormulario(request.POST)
         print(formularioPersona)
@@ -32,8 +27,18 @@ def personaFormulario(request):
             informacion = formularioPersona.cleaned_data
             persona = Persona(nombre=informacion['nombre'], apellido=informacion['apellido'], nacionalidad=informacion['nacionalidad'], ranking=informacion['ranking'])
             persona.save()
-            return render(request, "Personas/index.html") #agregar un gracias por cargar
+            return render(request, "Personas/persona.html", {"jugadores":jugadores}) #agregar un gracias por cargar
     else:
         formularioPersona = PersonaFormulario()
 
-    return render(request, "Personas/personaFormulario.html", {"formularioPersona":formularioPersona})
+    return render(request, "Personas/persona.html", {"formularioPersona":formularioPersona, "jugadores":jugadores})
+
+def buscar(request):
+    if request.GET["apellido"]:
+        apellido = request.GET["apellido"]
+        jugadores = Persona.objects.filter(apellido__icontains=apellido)
+        return render(request,"Personas/resultadosBusqueda.html", {"jugadores":jugadores})
+
+    else:
+        respuesta = "No enviaste datos"
+        return HttpResponse(respuesta)
