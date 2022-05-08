@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoPractica.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["C:/Users/gabo_/Desktop/Python/CoderDjango/ProyectoPracticaDjango/ProyectoPractica/Personas/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
