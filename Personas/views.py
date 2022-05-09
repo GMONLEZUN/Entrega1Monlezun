@@ -42,3 +42,23 @@ def buscar(request):
     else:
         respuesta = "No enviaste datos"
         return HttpResponse(respuesta)
+
+def buscaPais(request):
+    if request.GET["nacionalidad"]:
+        nacionalidad = request.GET["nacionalidad"]
+        jugadores = Persona.objects.filter(nacionalidad__icontains=nacionalidad)
+        return render(request,"Personas/resultadosBusqueda.html", {"jugadores":jugadores})
+
+    else:
+        respuesta = "No enviaste datos"
+        return HttpResponse(respuesta)
+
+def buscaNombre(request):
+    if request.GET["nombre"]:
+        nombre = request.GET["nombre"]
+        jugadores = Persona.objects.filter(nombre__icontains=nombre)
+        return render(request,"Personas/resultadosBusqueda.html", {"jugadores":jugadores})
+
+    else:
+        respuesta = "No enviaste datos"
+        return HttpResponse(respuesta)

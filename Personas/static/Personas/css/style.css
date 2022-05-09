@@ -1,5 +1,5 @@
 .header {
-    background-color: darkslategray;
+    background-color: rgba(9, 2, 36, 0.514);
 }
 
 .btn-admin {
@@ -39,14 +39,87 @@ footer {
 }
 
 .formCargaJugadores{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     border: 1px solid red;
-    width: 50%;
+    width: 45%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.137);
     border-radius: 15px;
     border-color: rgba(255, 255, 255, 0.247);
+}
+
+.buscaYcarga{
+    padding: 40px 20px;
+    border-radius: 8px;
+    background: rgb(2,0,36);
+    background: linear-gradient(124deg, rgba(2,0,36,0.4738270308123249) 0%, rgba(56,56,69,0.40940126050420167) 35%, rgba(58,72,102,0.45702030812324934) 57%, rgba(81,95,142,0.4822303921568627) 92%, rgba(74,113,121,0.48783263305322133) 100%);
+}
+
+/* From uiverse.io */
+.btnCargar {
+    --color: #261f2e;
+    font-family: inherit;
+    display: inline-block;
+    width: 6em;
+    height: 2.6em;
+    line-height: 2.5em;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+   }
+   
+   .btnCargar:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+   }
+   
+   .btnCargar:hover {
+    color: #fff;
+   }
+   
+   .btnCargar:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+   }
+   
+   .btnCargar:hover:before {
+    top: -30px;
+    left: -30px;
+   }
+   
+   .btnCargar:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+   }
+
+
+.btnBuscar {
+    margin-left: 3px;
+    border: 2px solid white;
+    color:white;
+}
+
+.btnBuscar:hover {
+    background-color: white;
+    color: #261f2e;
+    border: 2px solid white;
+}
+
+.formBuscaJugadores{
+    border-radius: 35px;
+    background-color: rgba(0, 0, 0, 0.267);
 }
