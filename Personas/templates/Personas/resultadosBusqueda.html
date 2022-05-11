@@ -7,10 +7,19 @@
     
     {% if jugadores %}
 
-    {% for jugador in jugadores%}
-        Nombre: {{jugador.nombre}} {{jugador.apellido}} [{{jugador.ranking}}] <br>
-    {% endfor %}
+        {% for jugador in jugadores%}
+            Nombre: {{jugador.nombre}} {{jugador.apellido}} [{{jugador.ranking}}] <br>
+        {% endfor %}
 
     {% endif %}
+
+    {% if torneos %}
+        
+        {% for torneo in torneos%}
+            Nombre: {{torneo.nombre}} <br>
+        {% endfor %}
+
+    {% endif %}
+
 
 {% endblock %}

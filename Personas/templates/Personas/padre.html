@@ -19,8 +19,9 @@
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="{% url 'Inicio' %}" class="nav-link px-2 text-white">Inicio</a></li>
-              <li><a href="{% url 'Persona' %}" class="nav-link px-2 text-white">Personas</a></li>
-              <li><a href="{% url 'Aperturas' %}" class="nav-link px-2 text-white">Aperturas</a></li>
+              <li><a href="{% url 'Persona' %}" class="nav-link px-2 text-white">Jugadores</a></li>
+              <li><a href="{% url 'Torneo' %}" class="nav-link px-2 text-white">Humano vs. Máquina</a></li>
+              <li><a href="{% url 'Campeones' %}" class="nav-link px-2 text-white">Campeones</a></li>
               <li><a href="{% url 'Contacto' %}" class="nav-link px-2 text-white">Contacto</a></li>
             </ul>
  
@@ -32,12 +33,14 @@
           </div>
         </div>
       </header>
+      <main class="contenidoQueCambia">
+        {% block contenidoQueCambia %}
 
-      {% block contenidoQueCambia %}
+        {% endblock %}
+      </main>
+   
 
-      {% endblock %}
-
-      <footer class="footer mt-auto py-3">
+      <footer class="footer">
         <hr>
         <div class="container d-flex flex-row justify-content-around text-muted">
           <p>
@@ -48,7 +51,7 @@
         </p>
         <p>
           pychess@gmail.com <br>
-          United States, NY
+          Ciudad de Buenos Aires, Argentina
       </p>
         </div>
         

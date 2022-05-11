@@ -1,3 +1,8 @@
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .header {
     background-color: rgba(9, 2, 36, 0.514);
 }
@@ -24,8 +29,10 @@
 
 
 body {
-
+    height: 100vh;
     color: white;
+    overflow-x: hidden;
+
 }
 
 table{
@@ -34,20 +41,23 @@ table{
 
 footer {
     position: relative;
-    bottom:0px;
+    max-height: 6vh;
+    min-height: 6vh;
+    bottom:0;
     width: 100%;
 }
 
 .formCargaJugadores{
-    border: 1px solid red;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.247);
     width: 45%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.137);
     border-radius: 15px;
-    border-color: rgba(255, 255, 255, 0.247);
 }
 
 .buscaYcarga{
+    position: relative;
     padding: 40px 20px;
     border-radius: 8px;
     background: rgb(2,0,36);
@@ -122,4 +132,34 @@ footer {
 .formBuscaJugadores{
     border-radius: 35px;
     background-color: rgba(0, 0, 0, 0.267);
+}
+
+.pantallaInicio {
+    height: 75vh;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.pantallaInicio img {
+    position: absolute;
+    height: 75vh;
+    width: 100%;
+    object-fit: cover;
+
+}
+.pantallaInicio div {
+    position:relative;
+    display:inline-block;
+    padding: 20px;
+    left: 40%;
+    top: 10%;
+    border-radius: 15px;
+    margin:auto;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+
+.contenidoQueCambia{
+    min-height: 87vh;
+    position: relative;;
 }

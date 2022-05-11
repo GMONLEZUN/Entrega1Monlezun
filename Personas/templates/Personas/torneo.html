@@ -1,39 +1,62 @@
-
 {% extends "Personas/padre.html" %}
 {% load static %}
 
 {% block contenidoQueCambia %}
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <table class="table table-dark table-hover">
             <thead>
                 <th>
-                    Nombre
+                    Torneo
                 </th>
                 <th>
-                    Apellido
+                    Sitio
                 </th>
                 <th>
-                    Nacionalidad
+                    Año
                 </th>
                 <th>
-                    Ranking
+                    N° de partidas
+                </th>
+                <th>
+                    Jugador
+                </th>
+                <th>
+                    Máquina
+                </th>
+                <th>
+                    Resultado
+                </th>
+                <th>
+                    Ganador
                 </th>
             </thead>
             <tbody>
-                {% for jugador in jugadores %}
+                {% for torneo in torneos %}
                     <tr>
                         <td>
-                            {{jugador.nombre}}
+                            {{torneo.nombre}}
                         </td>
                         <td>
-                            {{jugador.apellido}}
+                            {{torneo.sitio}}
                         </td>
                         <td>
-                            {{jugador.nacionalidad}}
+                            {{torneo.year}}
                         </td>
                         <td>
-                            {{jugador.ranking}}
+                            {{torneo.partidaN}}
+                        </td>
+                        <td>
+                            {{torneo.humano}}
+                        </td>
+                        <td>
+                            {{torneo.maquina}}
+                        </td>
+                        <td>
+                            {{torneo.partidaR}}
+                        </td>
+                        <td>
+                            {{torneo.ganador}}
                         </td>
                     </tr>
                 {% endfor %}
@@ -42,20 +65,19 @@
         </table>
     </div>
 
-
     <div class="container mt-4 d-flex flex-row justify-content-evenly  align-items-start buscaYcarga">
        
         <div class="d-flex flex-column align-items-center justify-content-center formCargaJugadores">
-            {% if formularioPersona.errors %}
+            {% if formularioTorneo.errors %}
             <p style="color:red">Revisar, hay errores en los datos</p>
             {% endif%}
         
             <form action="" method="POST" class="">{% csrf_token %}
-                <h3 class="mb-1">Formulario para la carga de jugadores</h3>
+                <h3 class="mb-1">Formulario para la carga de torneos</h3>
                 <hr class="mb-4">
                     <table class="">
                         <div class="formulario_inputs">
-                            {{ formularioPersona.as_table }}
+                            {{ formularioTorneo.as_table }}
                         </div>
                     </table>
                     <div class="col-12 d-flex justify-content-center">
@@ -63,27 +85,28 @@
                     </div>
             </form>
         </div>
+        
         <div class="d-flex flex-column formBuscaJugadores p-4">
-            <form action="{% url 'buscar' %}" method="GET" class="d-flex flex-row-reverse p-3 cuadroBusqueda">
+            <form action="{% url 'buscarTorneoY' %}" method="GET" class="d-flex flex-row-reverse p-3">
                 <div class="d-flex flex-row form-floating">
-                    <input type="text" name="apellido" id="floatingInput" class="form-control" placeholder="Buscar por apellido">
-                    <label for="floatingInput" style="color:darkgray">Buscar por apellido</label>
+                    <input type="text" name="year" id="floatingInput" class="form-control"  placeholder="Buscar por año">
+                    <label for="floatingInput" style="color:darkgray">Buscar por año</label>
                     <button type="submit" class="btn btn-outline-primary btnBuscar">Buscar</button>
                 </div>
             </form>
  
-            <form action="{% url 'buscaNombre' %}" method="GET" class="d-flex flex-row-reverse p-3 cuadroBusquedaNombre">
+            <form action="{% url 'buscarTorneoN' %}" method="GET" class="d-flex flex-row-reverse p-3">
                 <div class="d-flex flex-row form-floating">
-                    <input type="text" name="nombre" id="floatingInput" class="form-control" placeholder="Buscar por nombre">
-                    <label for="floatingInput" style="color:darkgray">Buscar por nombre</label>
+                    <input type="text" name="nombre" id="floatingInput" class="form-control" placeholder="Buscar por torneo">
+                    <label for="floatingInput" style="color:darkgray">Buscar por torneo</label>
                     <button type="submit" class="btn btn-outline-primary btnBuscar">Buscar</button>
                 </div>
             </form>
     
-            <form action="{% url 'buscaPais' %}" method="GET" class="d-flex flex-row-reverse p-3 cuadroBusquedaPais">
+            <form action="{% url 'buscarTorneoJ' %}" method="GET" class="d-flex flex-row-reverse p-3">
                 <div class="d-flex flex-row form-floating">
-                    <input type="text" name="nacionalidad" id="floatingInput" class="form-control" placeholder="Buscar por país">
-                    <label for="floatingInput" style="color:darkgray">Buscar por país</label>
+                    <input type="text" name="humano" id="floatingInput" class="form-control" placeholder="Buscar por jugador">
+                    <label for="floatingInput" style="color:darkgray">Buscar por jugador</label>
                     <button type="submit" class="btn btn-outline-primary btnBuscar">Buscar</button>
                 </div>
             </form>
@@ -91,6 +114,5 @@
     </div>
     
     
-   
   
 {% endblock %}
